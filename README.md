@@ -1,2 +1,1 @@
-his is making changes
-
+i am completely changing the readme. soon louise's computer will reflect this.
