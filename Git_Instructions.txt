@@ -1,16 +1,18 @@
 git clone — initially creates the repository. only need to do once
 
 
-git checkout -b “branch_name” — create new branch
+STEPS
 
-git commit -am “new commits”
+1. git checkout -b “branch_name” — create new branch
 
-git pull origin master — brings in changes others have made
+2. git add <file_name> — only if you are adding new files
 
-git push origin branch_name — have to still merge online
+3. git commit -am “new commits” — always must do
+
+4. git pull origin master — brings in changes others have made
 
 ADDING CHANGES
-git checkout master
+git checkout master // switches from your current branch to master branch
 git pull origin master
 git merge <branch_name>
 git push origin master
