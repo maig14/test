@@ -7,7 +7,7 @@ STEPS
 
 2. git add <file_name> — only if you are adding new files
 
-3. git commit -am “new commits” — always must do
+3. git commit -am “new commits comments” — always must do
 
 4. git pull origin master — brings in changes others have made
 
