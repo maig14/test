@@ -86,9 +86,9 @@
 % Column 10: mean # regions
 
 %% 1. Import and process text file (taken from ImageXpress data)
-folder = '/Users/louise/Desktop/011314/300/';
+folder = '/Users/louise/Desktop/012814/259/';
 cd(folder);
-run_num = '300-fitc';
+run_num = '259-fitc';
 fn = [run_num '.txt'];
 fid = fopen(fn);                % opens datafile (.txt)
 C = textscan(fid, '%d %s %s %f %f %d16', 'delimiter', ',', ...
