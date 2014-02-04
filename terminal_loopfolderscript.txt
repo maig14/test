@@ -1,10 +1,14 @@
+#!/bin/bash
+
 for file in *.csv
 do
+	newname = "#{file/%/}"
+
 	#remove the first 5 lines?
-	tail -n +6 file.csv > file2.csv
+	tail -n +6 file.csv > '${file%-2}.csv'
 
 	#split tritc and fitc and assign to new files
-	grep ' Site 1", 607,' $file.csv>>$file-tritc.txt
+	grep ' Site 1", 607,' ${file%-2}.csv>>$file-tritc.txt
 	grep -v ' Site 1", 607,' [VARIABLE].txt>>[VARIABLE]-fitc.txt
 
 	#find replace stuff we don't need
