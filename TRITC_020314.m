@@ -5,6 +5,7 @@ run_num = '6882';
 fid = fopen('wellnames.txt');
 well_data = textscan(fid, '%s');
 well_names = [0; well_data{1,1}];
+%creating a title for each column
 well_names{1,2} = '# neurons';
 well_names{1,3} = 'min neuron area';
 well_names{1,4} = 'mean neuron area';
@@ -14,11 +15,12 @@ well_names{1,7} = 'mean intensity';
 well_names{1,8} = 'max intensity';
 well_names{1,9} = 'SD intensity';
 well_names{1,10} = 'SD neuron area';
- 
+
 for i = 1:1:(size(well_names,1)-1)
    [num_neurons, area_min, area_mean, area_max, ...
        int_min, int_mean, int_max, int_sd, area_sd] = ...
-       calc_well(well_names{i+1,1}); 
+       calc_well(well_names{i+1,1});
+%filling in the rest of the row with data
    well_names{i+1,2} = num_neurons;
    well_names{i+1,3} = area_min;
    well_names{i+1,4} = area_mean;

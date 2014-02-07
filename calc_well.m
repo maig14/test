@@ -1,10 +1,16 @@
+%reading in values, opening file
 function [num_neurons, area_min, area_mean, area_max,...
     intensity_min, intensity_mean, intensity_max, ...
     intensity_sd, area_sd] = calc_well(file_name)
 file = [file_name '.txt'];
 fileid = fopen(file);
 
+%how to interpret the variables? what does this correspond to???
+%what file is this opening?
+%also only using the floating point values?
+%lotsa questions
 data = textscan(fileid, '%s %d %s %d %f %d %f', 'delimiter', ',');
+
 
 tritc_area = [data{1,5}];
 num_neurons = size(tritc_area, 1);
