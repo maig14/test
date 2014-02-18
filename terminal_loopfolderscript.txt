@@ -2,17 +2,21 @@
 
 for file in *.csv
 do
-	newname = "#{file/%/}"
+	//newname = ${file%.*}
 
-	#remove the first 5 lines?
-	tail -n +6 file.csv > '${file%-2}.csv'
-
+	
 	#split tritc and fitc and assign to new files
-	grep ' Site 1", 607,' ${file%-2}.csv>>$file-tritc.txt
-	grep -v ' Site 1", 607,' [VARIABLE].txt>>[VARIABLE]-fitc.txt
+	grep ' Site 1", 607,' ${file%.*}.csv>>${file%.*}-tritc.txt
+	grep -v ' Site 1", 607,' ${file%.*}.csv>>${file%.*}-fitc2.txt
 
 	#find replace stuff we don't need
-		sed -i '' 's/Site 1", 607,/Site 1",/g' [VARIABLE]-tritc.txt
-		sed -i '' 's/Site 1", 525,/Site 1",/g' [VARIABLE]-fitc.txt
+		sed -i '' 's/Site 1", 607,/Site 1",/g' ${file%.*}-tritc.txt
+		sed -i '' 's/Site 1", 525,/Site 1",/g' ${file%.*}-fitc2.txt
+
+	#remove the first 5 lines?
+		tail -n +6 ${file%.*}-fitc2.txt >> ${file%.*}-fitc.txt
+
+	#remove the copy file of fitc
+		rm -f ${file%.*}-fitc2.txt
 
 done

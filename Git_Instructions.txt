@@ -17,4 +17,4 @@ git pull origin master
 git merge <branch_name>
 git push origin master
 
-git branch -d // delete a branch locally (not online)
+git branch -d <branch_name> // delete a branch locally (not online)

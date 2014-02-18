@@ -12,6 +12,7 @@ cd(folder);
 % Sets up a cell named "wells" with column titles for individual well data input
 fid = fopen('wellnames.txt');
 well_data = textscan(fid, '%s');
+<<<<<<< HEAD
 wells = [0; well_data{1,1}];
 wells{1,2} = '# neurons';
 wells{1,3} = 'min neuron area';
@@ -37,6 +38,34 @@ for i = 1:1:(size(wells,1)-1)
    wells{i+1,8} = int_max;
    wells{i+1,9} = int_sd;
    wells{i+1,10} = area_sd;
+=======
+well_names = [0; well_data{1,1}];
+%creating a title for each column
+well_names{1,2} = '# neurons';
+well_names{1,3} = 'min neuron area';
+well_names{1,4} = 'mean neuron area';
+well_names{1,5} = 'max neuron area';
+well_names{1,6} = 'min intensity';
+well_names{1,7} = 'mean intensity';
+well_names{1,8} = 'max intensity';
+well_names{1,9} = 'SD intensity';
+well_names{1,10} = 'SD neuron area';
+
+for i = 1:1:(size(well_names,1)-1)
+   [num_neurons, area_min, area_mean, area_max, ...
+       int_min, int_mean, int_max, int_sd, area_sd] = ...
+       calc_well(well_names{i+1,1});
+%filling in the rest of the row with data
+   well_names{i+1,2} = num_neurons;
+   well_names{i+1,3} = area_min;
+   well_names{i+1,4} = area_mean;
+   well_names{i+1,5} = area_max;
+   well_names{i+1,6} = int_min;
+   well_names{i+1,7} = int_mean;
+   well_names{i+1,8} = int_max;
+   well_names{i+1,9} = int_sd;
+   well_names{i+1,10} = area_sd;
+>>>>>>> 711233a68af9239745ab703e6651479b8e8cb705
 end
 
 % Saves the aggregated cell data  
