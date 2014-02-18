@@ -6,12 +6,6 @@
 % localization signal. Data was collected for numerous neurons in multiple sites within 
 % wells of a 96-well plate.   
  
-function [num_neurons, area_min, area_mean, area_max,...
-    intensity_min, intensity_mean, intensity_max, ...
-    intensity_sd, area_sd] = calc_well(file_name)
-file = [file_name '.txt'];
-fileid = fopen(file);
-
 % The comma-delimited data is formatted with this information: Image Name, Image Plane, 
 % Stage Label, Cell: Assigned Label #, Cell: Area, Cell: Integrated Intensity, Cell: 
 % Average Intensity.
@@ -19,6 +13,12 @@ fileid = fopen(file);
 % In Matlab, %s denotes string, %d denotes integer, and %f denotes floating point. An 
 % example of one line in the text file that is being imported: 
 % "TRITC-FIXED", 1, "B02: Site 2", 5, 48.2589, 5328, 183.724 
+ 
+function [num_neurons, area_min, area_mean, area_max,...
+    intensity_min, intensity_mean, intensity_max, ...
+    intensity_sd, area_sd] = calc_well(file_name)
+file = [file_name '.txt'];
+fileid = fopen(file);
 
 data = textscan(fileid, '%s %d %s %d %f %d %f', 'delimiter', ',');
 
