@@ -86,9 +86,9 @@
 % Column 10: mean # regions
 
 %% 1. Import and process text file (taken from ImageXpress data)
-folder = '/Users/louise/Desktop/012814/259/';
+folder = '/Users/louise/Desktop/020914/';
 cd(folder);
-run_num = '259-fitc';
+run_num = '26-fitc';
 fn = [run_num '.txt'];
 fid = fopen(fn);                % opens datafile (.txt)
 C = textscan(fid, '%d %s %s %f %f %d16', 'delimiter', ',', ...
@@ -254,7 +254,7 @@ for w = 1:1:wellsize                % end is before sect. 3
     % Try to find spikes for average intensity values
     % CellsortFindspikes function takes in these inputs:
     % ica_sig, thresh, dt, deconvtau, normalization)
-            thresh = 50;             % intensity above which you count peak
+            thresh = 20;             % intensity above which you count peak
             dt = 1;
             deconvtau = 15;          % typically 13; duration of peak
     
@@ -577,6 +577,7 @@ for w = 1:1:wellsize                % end is before sect. 3
     
     clear col3 col5 col6 col7 col8;
 end
+
 
 %% 3. Plot UNSORTED summary data for plate
 
@@ -993,11 +994,12 @@ saveas(gcf, [run_num '-fig3'], 'png');
         wellall{w,2} = temp;
     end
     
-%% 10. Save summary
+    
+ %% 10. Save summary
 %newfolder = '/Users/louise/Desktop/031113/';
 %cd(newfolder);
-save([run_num '-thresh50deconv15-wellall'], 'wellall');
-save([run_num '-thresh50deconv15-summary'], 'summary');
+save([run_num '-thresh20deconv15-wellall'], 'wellall');
+save([run_num '-thresh20deconv15-summary'], 'summary');
 %clear
 
 %% 11. Export wellall peak data for use in Prism
@@ -1006,7 +1008,7 @@ for w = 1:1:size(wellall,1)
     curr_cell = wellall{w,2};
     num_neuron = size(curr_cell,1)-2;
     
-    peak(1,w) = wellall(w,1);
+    peak(1,w) = summary(w,1);
     peak(2:num_neuron+1,w) = curr_cell(1:num_neuron,3);
    
     %save(peak); % change this to suit Prism
